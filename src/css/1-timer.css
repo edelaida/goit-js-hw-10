@@ -1,0 +1,17 @@
+@import url("flatpickr/dist/flatpickr.min.css");
+
+.timer{
+  display: flex;
+  padding-top: 30px; 
+}
+.field{
+  display: flex;
+  flex-direction: column;  
+  padding-right: 20px;
+}
+.value {
+  font-size: xx-large;
+}
+section {
+  padding-bottom: 60px;
+}
