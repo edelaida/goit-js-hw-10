@@ -1,6 +1,9 @@
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+
 const startBtn = document.querySelector('button[data-start]');
 const datDays = document.querySelector('[data-days]');
 const datHours = document.querySelector('[data-hours]');
@@ -16,8 +19,7 @@ class SelectDate {
   }
   start() {
     this.intervalId = setInterval(() => {
-     const diff = userSelectedDate - Date.now();
-      console.log(diff);
+     const diff = userSelectedDate - Date.now();      
       datDays.textContent = format(this.selectTime(diff).days); 
       datHours.textContent = format(this.selectTime(diff).hours);
       datMinutes.textContent = format(this.selectTime(diff).minutes);
@@ -47,11 +49,15 @@ const options = {
     
     if (userSelectedDate < Date.now()) {
       startBtn.disabled = true;
-      alert(`Please choose a date in the future`);
+      iziToast.show({       
+          message: `Please choose a date in the future`,
+          position: 'topRight',
+          backgroundColor: 'red',
+          messageColor: 'white', 
+       });     
     } else {
       startBtn.disabled = false;
-     }
-       
+     }       
   },
 };
 
@@ -72,9 +78,5 @@ function convertMs(ms) {
 }
 const selectDate = new SelectDate(convertMs);
 
-
-// iziToast.show({
-//     title: 'Hey',
-//     message: 'Please choose a date in the future'
-// });
+ 
 
