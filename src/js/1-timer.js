@@ -24,12 +24,13 @@ class SelectDate {
       datHours.textContent = format(this.selectTime(diff).hours);
       datMinutes.textContent = format(this.selectTime(diff).minutes);
       datSeconds.textContent = format(this.selectTime(diff).seconds);
-    }, 1000);      
-  }
-  clearInter() {
+      if (diff <= 1000) { 
     clearInterval(this.intervalId);
-  } 
+  }
+    }, 1000);     
+  }  
 }
+
 function format(num) {
   return num.toString().padStart(2, '0');
 }
